@@ -88,7 +88,7 @@ print(rain_merge['date'].min())
 print(rain_merge['date'].max())
 
 allDone()
-# %% codecell
+# %% finish you new table
 #Create a table by your current season (apply one month ago + actual month + next month)
 seasoned_rain = rain_merge[(rain_merge['date'].dt.month == 5) | (rain_merge['date'].dt.month == 6) | (rain_merge['date'].dt.month == 7)]
 seasoned_rain = seasoned_rain[~(seasoned_rain['date'].dt.year <= 2007)]
@@ -246,16 +246,29 @@ allDone()
 print(calibrated_boosted_tuned_model_isotonic.estimators_)
 logs = get_logs(save=True)
 
+#%% Final Plot
+plot_model(calibrated_boosted_tuned_model)
+plot_model(calibrated_boosted_tuned_model, plot='error')
+plot_model(calibrated_boosted_tuned_model, plot='feature')
+
+
 #%% Optimize threshold
-optimize_threshold(calibrated_tuned_model, true_negative = 1500, false_negative = -5000)
+optimize_threshold(calibrated_boosted_tuned_model, true_negative = 1500, false_negative = -5000)
 allDone()
 print(calibrated_tuned_model_isotonic.estimators_)
 logs = get_logs(save=True)
 
-#%% Finalize Model
-final_rf = finalize_model(rf, probability_threshold =)
+#%% Predict
+save_model(calibrated_boosted_tuned_model, 'calibrated_boosted_tuned_model')
 allDone()
-save_model(dt, 'dt_saved_07032020')
+pred_holdout_calibrated_boosted_tuned_model = predict_model(calibrated_boosted_tuned_model, probability_threshold = 0.1949)
+allDone()
+logs = get_logs(save=True)
+
+#%% Finalize Model
+final_calibrated_boosted_tuned_model = finalize_model(calibrated_boosted_tuned_model)
+allDone()
+save_model(final_calibrated_boosted_tuned_model, 'final_calibrated_boosted_tuned_model')
 allDone()
 logs = get_logs(save=True)
 get_system_logs()
