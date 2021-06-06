@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/user/Documents/1.%20GitHub/Projeto%204%20-%20Itau/mlruns/1/597b7675c8d149cdb6e9a312e878f5ed/artifacts
+end_time: 1622880361899
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 597b7675c8d149cdb6e9a312e878f5ed
+run_uuid: 597b7675c8d149cdb6e9a312e878f5ed
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1622880361564
+status: 3
+tags: []
+user_id: user
